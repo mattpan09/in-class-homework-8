@@ -13,6 +13,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 @Component
@@ -92,11 +94,16 @@ public class DucksRepository {
         Path path = Paths.get(DATABASE_NAME);
         List<String> data = Files.readAllLines(path);
         for (String line : data) {
-            if(!line.trim().isEmpty()) {
+            if (!line.trim().isEmpty()) {
                 DuckData d = DuckData.fromLine(line);
                 result.add(d);
             }
         }
+        //Objects are DuckData
+        Arrays.sort(new List[]{result});
+
+
+
         return result;
     }
 
